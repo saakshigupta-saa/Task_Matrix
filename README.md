@@ -11,6 +11,16 @@ TaskMatrix is a full-stack Agile project management platform designed to help so
 **Fullstack Developer**
 
 ---
+## 📸 Screenshots
+
+###  Dashboard :
+<img width="1892" height="980" alt="Screenshot 2026-09-18 200913" src="https://github.com/user-attachments/assets/3c1c4d4f-ad44-4f8f-a3de-fbe36403ffb3" />
+
+###  Projects:
+<img width="1917" height="990" alt="Screenshot 2026-09-18 201004" src="https://github.com/user-attachments/assets/d57698d1-f14a-415b-9187-881cf32cb570" />
+
+### Tasks:
+<img width="1917" height="978" alt="Screenshot 2026-09-18 201018" src="https://github.com/user-attachments/assets/b89f0b86-bf76-46e9-b9e9-818fa4975d13" />
 
 ## ✨ Features
 
