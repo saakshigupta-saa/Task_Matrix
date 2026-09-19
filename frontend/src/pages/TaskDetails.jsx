@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function TaskDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -30,7 +33,7 @@ function TaskDetails() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `http://localhost:5000/api/tasks/${id}`,
+        `${API_URL}/api/tasks/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -69,7 +72,7 @@ function TaskDetails() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/api/projects",
+        `${API_URL}/api/projects`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -135,7 +138,7 @@ function TaskDetails() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/tasks/${id}`,
+        `${API_URL}/api/tasks/${id}`,
         formData,
         {
           headers: {
@@ -175,7 +178,7 @@ function TaskDetails() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/tasks/${id}`,
+        `${API_URL}/api/tasks/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -608,3 +611,4 @@ function TaskDetails() {
 }
 
 export default TaskDetails;
+

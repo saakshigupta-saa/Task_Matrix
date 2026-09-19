@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
@@ -35,14 +38,12 @@ function Projects() {
 
       const [projectsResponse, tasksResponse] =
         await Promise.all([
-          axios.get(
-            "http://localhost:5000/api/projects",
-            { headers }
-          ),
-          axios.get(
-            "http://localhost:5000/api/tasks",
-            { headers }
-          ),
+          axios.get(`${API_URL}/api/projects`, {
+            headers,
+          }),
+          axios.get(`${API_URL}/api/tasks`, {
+            headers,
+          }),
         ]);
 
       setProjects(
@@ -104,7 +105,7 @@ function Projects() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/projects",
+        `${API_URL}/api/projects`,
         formData,
         {
           headers: {
@@ -155,7 +156,7 @@ function Projects() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/projects/${editingId}`,
+        `${API_URL}/api/projects/${editingId}`,
         formData,
         {
           headers: {
@@ -213,7 +214,7 @@ function Projects() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/projects/${projectId}`,
+        `${API_URL}/api/projects/${projectId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -259,7 +260,7 @@ function Projects() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        `http://localhost:5000/api/projects/${projectId}/members`,
+        `${API_URL}/api/projects/${projectId}/members`,
         {
           email: memberEmail,
         },

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -12,6 +11,9 @@ import {
   Menu,
   X,
 } from "lucide-react";
+
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +31,7 @@ function Sidebar() {
       }
 
       const response = await axios.get(
-        "http://localhost:5000/api/notifications",
+        `${API_URL}/api/notifications`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

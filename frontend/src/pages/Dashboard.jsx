@@ -1,7 +1,9 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 function Dashboard() {
   const [projects, setProjects] = useState([]);
@@ -24,13 +26,13 @@ function Dashboard() {
         tasksResponse,
         activitiesResponse,
       ] = await Promise.all([
-        axios.get("http://localhost:5000/api/projects", {
+        axios.get(`${API_URL}/api/projects`, {
           headers,
         }),
-        axios.get("http://localhost:5000/api/tasks", {
+        axios.get(`${API_URL}/api/tasks`, {
           headers,
         }),
-        axios.get("http://localhost:5000/api/activities", {
+        axios.get(`${API_URL}/api/activities`, {
           headers,
         }),
       ]);

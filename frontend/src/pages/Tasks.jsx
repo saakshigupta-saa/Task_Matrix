@@ -8,6 +8,9 @@ import {
   useDroppable,
 } from "@dnd-kit/core";
 
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function DraggableTask({ task }) {
   const {
     attributes,
@@ -166,7 +169,7 @@ function Tasks() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/api/tasks",
+        `${API_URL}/api/tasks`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -190,7 +193,7 @@ function Tasks() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/api/projects",
+        `${API_URL}/api/projects`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -216,7 +219,7 @@ function Tasks() {
 
   // Listen for real-time task updates
   useEffect(() => {
-    const socket = io("http://localhost:5000");
+    const socket = io(API_URL);
 
     socket.on("taskUpdated", (updatedTask) => {
       setTasks((currentTasks) =>
@@ -261,7 +264,7 @@ function Tasks() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/tasks",
+        `${API_URL}/api/tasks`,
         formData,
         {
           headers: {
@@ -347,7 +350,7 @@ function Tasks() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/tasks/${taskId}`,
+        `${API_URL}/api/tasks/${taskId}`,
         {
           status: newStatus,
         },
